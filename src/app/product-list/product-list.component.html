@@ -1,1 +1,14 @@
-<p>product-list works!</p>
+@for(product of products; track product.id) {
+    <div class="single-product-div">
+        <h2>{{ product.title }}</h2>
+        <h6>{{ product.description }}</h6>
+        <h4>Price: USD.{{ product.price }}</h4> 
+        <h4>Category: {{ product.category }}</h4>
+        <h4>Brand: {{ product.brand }}</h4> 
+        <h4>Stock: {{ product.stock }}</h4>
+    </div>
+}
+
+@empty {
+    <h3>No posts</h3>
+}
