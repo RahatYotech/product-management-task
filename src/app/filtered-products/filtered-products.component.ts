@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FilterFormServiceService } from '../Services/filter-form-service.service';
 
 @Component({
   selector: 'app-filtered-products',

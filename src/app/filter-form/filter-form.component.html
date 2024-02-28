@@ -1,1 +1,5 @@
-<p>filter-form works!</p>
+<form [formGroup]="filterForm" (submit)="submitFilterForm()">
+    <label for="category">Category:</label>
+    <input id="category" type="text" formControlName="category">
+    <button type="submit">Apply filter</button>
+</form>
