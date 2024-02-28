@@ -1,29 +1,33 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
+import { PaginationComponent } from '../pagination/pagination.component';
+import { FetchAllProductsService } from '../Services/fetch-all-products.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive, PaginationComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
-
-  constructor() {}
-
-  http = inject(HttpClient);
+  
+  private fetchAllProductsService = inject(FetchAllProductsService);
   products: any[] = [];
 
-  ngOnInit(): void {
-    this.fetchProducts();
-  }
+  constructor() { }
 
-  fetchProducts() {
-    this.http.get('https://dummyjson.com/products')
+  ngOnInit(): void {
+    this.loadAllProducts();
+  }
+  
+
+  loadAllProducts() {
+    this.fetchAllProductsService.getProducts()
     .subscribe((data: any) => {
       console.log(data.products);
       this.products = data.products;
     })
   }
+
 }

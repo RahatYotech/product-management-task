@@ -1,7 +1,18 @@
+.product-list-section 
+{
+    border: 2px solid tomato;
+}
+
 .single-product-div 
 {
     border: 2px solid slateblue;
     border-radius: 25px;
     margin: 20px 15px;
     padding: 10px;
+}
+
+.pagination-section 
+{
+    display: flex;
+    justify-content: center;
 }
