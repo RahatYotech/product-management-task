@@ -21,11 +21,9 @@ export class ProductListComponent implements OnInit {
     this.loadAllProducts();
   }
   
-
   loadAllProducts() {
     this.fetchAllProductsService.getProducts()
     .subscribe((data: any) => {
-      console.log(data.products);
       this.products = data.products;
     })
   }

@@ -20,18 +20,14 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( params => {
       const id = params.get('id');
-      console.log('id:', id);
       this.productId = id;
-      console.log('productId:', this.productId);
     });
     this.loadSingleProduct(this.productId);
   }
 
-
   loadSingleProduct(ID: any) {
     this.fetchSingleProductService.getSingleProduct(ID)
     .subscribe((data: any) => {
-      console.log(data);
       this.productDetails = data; 
     })
   }
