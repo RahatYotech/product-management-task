@@ -8,9 +8,9 @@
             <h4>Category: {{ product.category }}</h4>
             <h4>Brand: {{ product.brand }}</h4> 
             <h4>Stock: {{ product.stock }}</h4>
-            <a [routerLink]="['/product-details/' + product.id]">
-                <button>view</button>
-            </a>
+            <a [routerLink]="['/product-details/' + product.id]"> <button>View</button> </a>
+            <a [routerLink]="['/update-product/' + product.id]"> <button>Update</button> </a>
+            <a [routerLink]="['/delete-product/' + product.id]"> <button>Delete</button> </a>
         </div>
     }
 
