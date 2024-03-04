@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FilterFormServiceService } from '../Services/filter-form-service.service';
 import { SearchFormServiceService } from '../Services/search-form-service.service';
 import { FetchSearchedProductsService } from '../Services/fetch-searched-products.service';
+import { AddProductServiceService } from '../Services/add-product-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +17,7 @@ import { FetchSearchedProductsService } from '../Services/fetch-searched-product
 export class ProductListComponent implements OnInit {
   
   products: any[] = [];
+  newProduct: {} = {};
   category: string = "";
   queryText: string = "";
 
@@ -23,7 +25,8 @@ export class ProductListComponent implements OnInit {
     private fetchAllProductsService: FetchAllProductsService,
     private fetchSearchedProductsService: FetchSearchedProductsService,
     private filterFormService: FilterFormServiceService,
-    private searchFormService: SearchFormServiceService
+    private searchFormService: SearchFormServiceService, 
+    private addProductService: AddProductServiceService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +39,11 @@ export class ProductListComponent implements OnInit {
     this.searchFormService.queryTextEmitter$.subscribe((value) => {
       this.queryText = value;
       this.loadSearchedProducts();
+    })
+    // subscribing a behavior subject in the add product form
+    this.addProductService.newProductEmitter$.subscribe((value) => {
+      this.newProduct = value;
+      this.products.push(this.newProduct);
     })
   }
   

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterFormComponent } from '../filter-form/filter-form.component';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FetchSearchedProductsService } from '../Services/fetch-searched-products.service';
 import { SearchFormServiceService } from '../Services/search-form-service.service';
 
 @Component({

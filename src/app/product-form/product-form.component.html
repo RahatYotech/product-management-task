@@ -1,3 +1,27 @@
-<section class="product-form-section">
-    <p>product-form works!</p>
-</section>
+<div class="product-form-section">
+    <h2>Add new product</h2>
+    <form [formGroup]="productForm" (submit)="submitAddProductForm()">
+        <label for="id">ID: </label>
+        <input type="number" #id id="id" name="id" formControlName="id">
+        &nbsp;
+        <label for="title">Title: </label>
+        <input type="text" #title id="title" name="title" formControlName="title">
+        &nbsp;    
+        <label for="description">Description: </label>
+        <input type="text" #description id="description" name="description" formControlName="description">
+        &nbsp;
+        <label for="price">Price: </label>
+        <input type="number" #price id="price" name="price" formControlName="price">
+        &nbsp;
+        <label for="category">Category: </label>
+        <input type="text" #category id="category" name="category" formControlName="category">
+        <br><br>
+        <label for="brand">Brand: </label>
+        <input type="text" #brand id="brand" name="brand" formControlName="brand">
+        &nbsp;
+        <label for="stock">Stock: </label>
+        <input type="number" #stock id="stock" name="stock" formControlName="stock">
+        <br><br>
+        <button type="submit">Add</button>
+    </form>
+</div>

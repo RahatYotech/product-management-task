@@ -1,7 +1,7 @@
 .search-section 
 {
     border: 2px solid tomato;
-    margin: 5px;
+    margin: 5px 0px;
     padding: 10px; 
     display: flex;
     justify-content: space-between;
@@ -10,11 +10,13 @@
 .search-form
 {
     border: 2px solid tomato;
-    margin: 5px;
+    margin: 2px;
+    padding: 5px;
 }
 
 .filter-form
 {
     border: 2px solid tomato; 
-    margin: 5px;
+    margin: 2px;
+    padding: 5px;
 }
