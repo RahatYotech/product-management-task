@@ -4,6 +4,7 @@ import { FilterFormServiceService } from '../Services/filter-form-service.servic
 import { FetchAllProductsService } from '../Services/fetch-all-products.service';
 import { FetchAllCategoriesService } from '../Services/fetch-all-categories.service';
 import { CommonModule } from '@angular/common';
+import { DataServiceService } from '../Services/data-service.service';
 
 @Component({
   selector: 'app-filter-form',
@@ -36,7 +37,7 @@ export class FilterFormComponent implements OnInit {
   }
 
   submitFilterForm(){
-    this.category = this.filterForm.value.category ?? ''
+    this.category = this.filterForm.value.category ?? '';
     this.filterFormService.raiseCategoryEmitterEvent(this.category);
   }
 

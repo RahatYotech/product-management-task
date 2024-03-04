@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { SearchSectionComponent } from './search-section/search-section.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
     RouterLink,
     RouterLinkActive,
     ProductFormComponent, 
-    SearchFormComponent, 
+    SearchSectionComponent,
     ProductListComponent
   ],
   templateUrl: './app.component.html',

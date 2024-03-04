@@ -1,9 +1,5 @@
-<section class="search-form-section">
-    <div>
-        <p>search-form works!</p>
-    </div>
-    <div class="filter-form">
-        <app-filter-form></app-filter-form>
-    </div>
-</section>
+<form [formGroup]="searchForm" (submit)="submitSearchForm()">
+    <input type="text" #queryText id="queryText" formControlName="queryText">
+    <button type="submit">Search</button>
+</form>
 
