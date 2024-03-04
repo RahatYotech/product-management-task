@@ -24,15 +24,14 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.filterFormService.categoryEmitter$.subscribe((value) => {
       this.category = value;
-      this.loadAllProducts(value);
+      this.loadAllProducts();
     })
   }
   
-  loadAllProducts(category: string) {
+  loadAllProducts() {
     this.fetchAllProductsService.getProducts(this.category)
     .subscribe((data: any) => {
       this.products = data.products;
-      console.log('product-list:', this.products);
     })
     
   }
