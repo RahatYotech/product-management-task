@@ -9,12 +9,15 @@ const BASE_URL = 'https://dummyjson.com/products';
 
 export class FetchAllProductsService {
 
-  private http = inject(HttpClient);
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getProducts() {
-    return this.http.get(BASE_URL);
+  getProducts(category: string) {
+    if (category) {
+      return this.http.get(BASE_URL+`/category/${category}`)
+    }
+    else {
+      return this.http.get(BASE_URL);
+    }
   }
 
 }

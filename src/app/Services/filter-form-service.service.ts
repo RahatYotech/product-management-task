@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterFormServiceService {
 
-  private category: string = "nooo-category";
-
-  constructor() { }
-
-  sendFilterFormData(category: string){
-    this.category = category;
+  categoryEmitter$ = new BehaviorSubject<string>("");
+  
+  raiseCategoryEmitterEvent(data: string) {
+    this.categoryEmitter$.next(data);
   }
 
-  getFilterFormData(){
-    return this.category;
+  getData() {
+    return this.categoryEmitter$.asObservable();
   }
 }

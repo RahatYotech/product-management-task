@@ -1,5 +1,10 @@
 <form [formGroup]="filterForm" (submit)="submitFilterForm()">
     <label for="category">Category:</label>
-    <input id="category" type="text" formControlName="category">
+    <input id="category" #category type="text" formControlName="category">
     <button type="submit">Apply filter</button>
 </form>
+
+<!-- <div class="form-div">
+    <input type="text" [(ngModel)]="category">
+    <button (click)="onBtnClick()">show</button>
+</div> -->

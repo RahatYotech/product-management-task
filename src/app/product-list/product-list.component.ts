@@ -1,7 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, SimpleChanges, inject } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FetchAllProductsService } from '../Services/fetch-all-products.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FilterFormServiceService } from '../Services/filter-form-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,20 +13,27 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   
-  private fetchAllProductsService = inject(FetchAllProductsService);
   products: any[] = [];
+  category: string = "";
 
-  constructor() { }
+  constructor(
+    private fetchAllProductsService: FetchAllProductsService,
+    private filterFormService: FilterFormServiceService
+  ) { }
 
   ngOnInit(): void {
-    this.loadAllProducts();
-  }
-  
-  loadAllProducts() {
-    this.fetchAllProductsService.getProducts()
-    .subscribe((data: any) => {
-      this.products = data.products;
+    this.filterFormService.categoryEmitter$.subscribe((value) => {
+      this.category = value;
+      this.loadAllProducts(value);
     })
   }
-
+  
+  loadAllProducts(category: string) {
+    this.fetchAllProductsService.getProducts(this.category)
+    .subscribe((data: any) => {
+      this.products = data.products;
+      console.log('product-list:', this.products);
+    })
+    
+  }
 }

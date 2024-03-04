@@ -1,27 +1,34 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterFormServiceService } from '../Services/filter-form-service.service';
+import { FetchAllProductsService } from '../Services/fetch-all-products.service';
 
 @Component({
   selector: 'app-filter-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule
+  ],
   templateUrl: './filter-form.component.html',
   styleUrl: './filter-form.component.css'
 })
+
 export class FilterFormComponent {
   filterForm = new FormGroup({
     category: new FormControl('')
   })
 
-  private filterFormService = inject(FilterFormServiceService);
+  products: any[] = [];
+  category: string = "";
 
-  constructor() {}
+  constructor(
+    private filterFormService: FilterFormServiceService  
+  ) {}
 
-  // this method will be called from the template on form submit
   submitFilterForm(){
-    this.filterFormService.sendFilterFormData(
-      this.filterForm.value.category ?? 'no-category'
-    );
+    this.category = this.filterForm.value.category ?? ''
+    this.filterFormService.raiseCategoryEmitterEvent(this.category);
   }
+
 }
