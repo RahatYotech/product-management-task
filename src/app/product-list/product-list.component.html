@@ -7,7 +7,7 @@
     }
     <div>
         @for(product of products; track product.id) {
-            <div class="singleProduct" [class.lightBlueBg]="isOdd(product.id)">
+            <div class="singleProduct" [class.lightBlueBg]="isOdd(product.id)" [ngStyle]="{'background-color': getRandomColor(product.category)}">
                 <h2>{{ product.title }}</h2>
                 <h6>{{ product.description }}</h6>
                 <h4>Price: USD.{{ product.price }}</h4> 
@@ -15,7 +15,7 @@
                 <h4>Brand: {{ product.brand }}</h4> 
                 <h4>Stock: {{ product.stock }}</h4>
                 <a [routerLink]="['/product-details/' + product.id]"> <button>View</button> </a>    
-                <a [routerLink]="['/update-product/' + product.id]"> <button>Update</button> </a>  
+                <button>Update</button>  
                 <button (click)="onProductDelete(product.id)">Delete</button> 
             </div>
         }

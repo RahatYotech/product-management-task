@@ -7,6 +7,7 @@ import { SearchFormServiceService } from '../Services/search-form-service.servic
 import { FetchSearchedProductsService } from '../Services/fetch-searched-products.service';
 import { AddProductServiceService } from '../Services/add-product-service.service';
 import { CommonModule } from '@angular/common';
+import { FetchAllCategoriesService } from '../Services/fetch-all-categories.service';
 
 @Component({
   selector: 'app-product-list',
@@ -43,6 +44,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private fetchAllProductsService: FetchAllProductsService,
     private fetchSearchedProductsService: FetchSearchedProductsService,
+    private fetchCategoriesService: FetchAllCategoriesService,
     private filterFormService: FilterFormServiceService,
     private searchFormService: SearchFormServiceService, 
     private addProductService: AddProductServiceService,
@@ -83,5 +85,25 @@ export class ProductListComponent implements OnInit {
     })
   } 
 
+  // generating a random color 
+  colors: {} = {};
+  getRandomColor(category: any): string {
+    let resultColor: string = "";
+    
+    // *** the category should not be of type <any>. it should be <string>. 
+    if (this.colors[category]) {
+      resultColor = this.colors[category];
+    }
+    else {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      this.colors[category] = color;
+      resultColor = color;
+    }
+    return resultColor;
+  }
 
 }
