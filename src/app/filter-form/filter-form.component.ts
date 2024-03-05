@@ -1,10 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterFormServiceService } from '../Services/filter-form-service.service';
-import { FetchAllProductsService } from '../Services/fetch-all-products.service';
 import { FetchAllCategoriesService } from '../Services/fetch-all-categories.service';
 import { CommonModule } from '@angular/common';
-import { DataServiceService } from '../Services/data-service.service';
 
 @Component({
   selector: 'app-filter-form',

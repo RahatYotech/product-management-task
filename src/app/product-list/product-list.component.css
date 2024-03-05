@@ -1,9 +1,9 @@
-.product-list-section 
+.mainSection 
 {
     border: 2px solid tomato;
 }
 
-.single-product-div 
+.singleProduct
 {
     border: 2px solid slateblue;
     border-radius: 25px;
@@ -11,7 +11,12 @@
     padding: 10px;
 }
 
-.pagination-section 
+.lightBlueBg
+{
+    background-color: rgba(92, 160, 237);
+}
+
+.paginationSection 
 {
     display: flex;
     justify-content: center;

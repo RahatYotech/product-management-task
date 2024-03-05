@@ -6,11 +6,17 @@ import { FilterFormServiceService } from '../Services/filter-form-service.servic
 import { SearchFormServiceService } from '../Services/search-form-service.service';
 import { FetchSearchedProductsService } from '../Services/fetch-searched-products.service';
 import { AddProductServiceService } from '../Services/add-product-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, PaginationComponent],
+  imports: [
+    CommonModule,
+    RouterLink, 
+    RouterLinkActive, 
+    PaginationComponent
+  ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -20,6 +26,11 @@ export class ProductListComponent implements OnInit {
   newProduct: {} = {};
   category: string = "";
   queryText: string = "";
+
+  // Function to check if a number is even
+  isOdd(num: number): boolean {
+    return num % 2 !== 0;
+  }
 
   constructor(
     private fetchAllProductsService: FetchAllProductsService,

@@ -1,24 +1,25 @@
-<section class="product-list-section">
+<section class="mainSection">
     <h1>Product list</h1>
-    @for(product of products; track product.id) {
-        <div class="single-product-div">
-            <h2>{{ product.title }}</h2>
-            <h6>{{ product.description }}</h6>
-            <h4>Price: USD.{{ product.price }}</h4> 
-            <h4>Category: {{ product.category }}</h4>
-            <h4>Brand: {{ product.brand }}</h4> 
-            <h4>Stock: {{ product.stock }}</h4>
-            <a [routerLink]="['/product-details/' + product.id]"> <button>View</button> </a>
-            <a [routerLink]="['/update-product/' + product.id]"> <button>Update</button> </a>
-            <a [routerLink]="['/delete-product/' + product.id]"> <button>Delete</button> </a>
-        </div>
-    }
+    <div>
+        @for(product of products; track product.id) {
+            <div class="singleProduct" [class.lightBlueBg]="isOdd(product.id)">
+                <h2>{{ product.title }}</h2>
+                <h6>{{ product.description }}</h6>
+                <h4>Price: USD.{{ product.price }}</h4> 
+                <h4>Category: {{ product.category }}</h4>
+                <h4>Brand: {{ product.brand }}</h4> 
+                <h4>Stock: {{ product.stock }}</h4>
+                <a [routerLink]="['/product-details/' + product.id]"> <button>View</button> </a>    
+                <a [routerLink]="['/update-product/' + product.id]"> <button>Update</button> </a>  
+                <a [routerLink]="['/delete-product/' + product.id]"> <button>Delete</button> </a> 
+            </div>
+        }
+        @empty {
+            <h3>No products</h3>
+        }
+    </div>
 
-    @empty {
-        <h3>No products</h3>
-    }
-
-    <div class="pagination-section">
+    <div class="paginationSection">
         <app-pagination></app-pagination>
     </div>
 
