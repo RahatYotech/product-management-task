@@ -15,6 +15,9 @@ import { AddProductServiceService } from '../Services/add-product-service.servic
   styleUrl: './product-form.component.css'
 })
 export class ProductFormComponent {
+
+  toastMsg: string = "";
+
   productForm = new FormGroup({
     id: new FormControl(''),
     title: new FormControl(''),
@@ -40,6 +43,12 @@ export class ProductFormComponent {
       stock: this.productForm.value.stock ?? ''
     }; 
     
+    const id = this.productForm.value.id ?? '';
+    this.toastMsg = `Product with ID: ${id} is added`;
+
+
     this.addProductService.raiseNewProductEmitterEvent(this.newProduct);
+
+    
   }
 }

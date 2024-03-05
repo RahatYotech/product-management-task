@@ -4,3 +4,12 @@
     margin: 5px 0px;
     padding: 10px;
 }
+
+.toastMsg 
+{
+    background-color: rgba(31, 160, 31, 0.842);
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+}

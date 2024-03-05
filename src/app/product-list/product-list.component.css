@@ -26,7 +26,7 @@
 
 .toastMsg 
 {
-    background-color: slateblue;
+    background-color: rgba(216, 33, 33, 0.795);
     color: white;
     margin: 5px;
     padding: 10px;

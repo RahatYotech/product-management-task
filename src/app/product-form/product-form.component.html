@@ -1,5 +1,10 @@
 <div class="product-form-section">
     <h2>Add new product</h2>
+    @if (toastMsg) {
+        <div class="toastMsg">
+            <h3>{{toastMsg}}</h3>
+        </div>
+        }
     <form [formGroup]="productForm" (submit)="submitAddProductForm()">
         <label for="id">ID: </label>
         <input type="number" #id id="id" name="id" formControlName="id">
