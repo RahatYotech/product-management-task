@@ -16,8 +16,19 @@
     background-color: rgba(92, 160, 237);
 }
 
+
 .paginationSection 
 {
     display: flex;
     justify-content: center;
+}
+
+
+.toastMsg 
+{
+    background-color: slateblue;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
 }

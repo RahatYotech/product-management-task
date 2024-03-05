@@ -1,5 +1,10 @@
 <section class="mainSection">
     <h1>Product list</h1>
+    @if (toastMsg) {
+    <div class="toastMsg">
+        <h3>{{toastMsg}}</h3>
+    </div>
+    }
     <div>
         @for(product of products; track product.id) {
             <div class="singleProduct" [class.lightBlueBg]="isOdd(product.id)">
@@ -11,7 +16,7 @@
                 <h4>Stock: {{ product.stock }}</h4>
                 <a [routerLink]="['/product-details/' + product.id]"> <button>View</button> </a>    
                 <a [routerLink]="['/update-product/' + product.id]"> <button>Update</button> </a>  
-                <a [routerLink]="['/delete-product/' + product.id]"> <button>Delete</button> </a> 
+                <button (click)="onProductDelete(product.id)">Delete</button> 
             </div>
         }
         @empty {

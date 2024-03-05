@@ -26,10 +26,18 @@ export class ProductListComponent implements OnInit {
   newProduct: {} = {};
   category: string = "";
   queryText: string = "";
+  toastMsg: string = "";
 
-  // Function to check if a number is even
+  // Function to check if id number is odd
   isOdd(num: number): boolean {
     return num % 2 !== 0;
+  }
+
+  // Function to remove product
+  onProductDelete(id: number): void {
+    const filteredProductListAfterDelete = this.products.filter(product => product.id !== id);
+    this.products = filteredProductListAfterDelete;
+    this.toastMsg = `Product with ID: ${id} has been removed`;
   }
 
   constructor(
@@ -37,7 +45,7 @@ export class ProductListComponent implements OnInit {
     private fetchSearchedProductsService: FetchSearchedProductsService,
     private filterFormService: FilterFormServiceService,
     private searchFormService: SearchFormServiceService, 
-    private addProductService: AddProductServiceService
+    private addProductService: AddProductServiceService,
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +65,8 @@ export class ProductListComponent implements OnInit {
       this.products.push(this.newProduct);
     })
   }
-  
+
+
   // loading all products or filtered products
   loadAllProducts() {
     this.fetchAllProductsService.getProducts(this.category)
@@ -73,4 +82,6 @@ export class ProductListComponent implements OnInit {
       this.products = data.products;
     })
   } 
+
+
 }
