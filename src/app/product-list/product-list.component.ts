@@ -86,12 +86,10 @@ export class ProductListComponent implements OnInit {
   } 
 
   // generating a random color 
-  colors: {} = {};
-  getRandomColor(category: any): string {
+  colors: { [key: string]: string } = {};
+  getRandomColor(category: string): string {
     let resultColor: string = "";
-    
-    // *** the category should not be of type <any>. it should be <string>. 
-    if (this.colors[category]) {
+    if (category in this.colors) {
       resultColor = this.colors[category];
     }
     else {
@@ -105,5 +103,4 @@ export class ProductListComponent implements OnInit {
     }
     return resultColor;
   }
-
 }
